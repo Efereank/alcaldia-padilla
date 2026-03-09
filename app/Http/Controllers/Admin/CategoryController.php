@@ -78,11 +78,12 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
-    {
-        $category->delete();
+public function destroy(Category $category)
+{
+    // Con SET NULL, los artículos quedan con category_id = NULL automáticamente
+    $category->delete();
 
-        return redirect()->route('admin.categories.index')
-            ->with('success', 'Categoría eliminada exitosamente.');
-    }
+    return redirect()->route('admin.categories.index')
+        ->with('success', 'Categoría eliminada exitosamente. Los artículos ahora están sin categoría.');
+}
 }

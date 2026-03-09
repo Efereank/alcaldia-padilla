@@ -4,19 +4,25 @@
 <div class="admin-container">
     <div class="admin-header">
         <h1 class="admin-title">Administrar Categorías</h1>
-
-            <a href="{{ route('admin.articles.create') }}" class="btn btn-primary">
-                + Crear Noticia
+        <div class="header-buttons">
+            <a href="{{ route('admin.articles.index') }}" class="btn btn-secondary">
+                Volver a Noticias
             </a>
-
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
-            + Nueva Categoría
-        </a>
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
+                + Nueva Categoría
+            </a>
+        </div>
     </div>
 
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
         </div>
     @endif
 
@@ -29,22 +35,22 @@
                     <th>Slug</th>
                     <th>Descripción</th>
                     <th>Artículos</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($categories as $category)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td class="title-cell">{{ $category->name }}</td>
-                    <td><code class="slug-code">{{ $category->slug }}</code></td>
-                    <td>{{ Str::limit($category->description, 50) ?? '—' }}</td>
-                    <td>
+                    <td data-label="ID">{{ $category->id }}</td>
+                    <td data-label="Nombre" class="title-cell">{{ $category->name }}</td>
+                    <td data-label="Slug"><code class="slug-code">{{ $category->slug }}</code></td>
+                    <td data-label="Descripción">{{ Str::limit($category->description, 50) ?? '—' }}</td>
+                    <td data-label="Artículos">
                         <span class="badge badge-info">
                             {{ $category->articles_count ?? 0 }} artículos
                         </span>
                     </td>
-                    <td class="actions-cell">
+                    <td data-label="Acciones" class="actions-cell">
                         <a href="{{ route('admin.categories.edit', $category) }}" class="btn-edit">
                             Editar
                         </a>
@@ -59,11 +65,13 @@
                 @empty
                 <tr>
                     <td colspan="6" class="empty-state">
-                        <div class="empty-icon">📂</div>
-                        <p>No hay categorías creadas aún</p>
-                        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary mt-4">
-                            Crear primera categoría
-                        </a>
+                        <div class="empty-state-content">
+                            <div class="empty-icon">📂</div>
+                            <p class="empty-message">No hay categorías creadas aún</p>
+                            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
+                                Crear primera categoría
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 @endforelse
@@ -71,8 +79,10 @@
         </table>
     </div>
 
+    @if($categories->hasPages())
     <div class="pagination-wrapper">
         {{ $categories->links() }}
     </div>
+    @endif
 </div>
 @endsection

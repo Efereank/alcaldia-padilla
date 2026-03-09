@@ -22,12 +22,12 @@
         <div class="navbar-container">
             <div class="navbar-wrapper">
                 <!-- Logo -->
-                <div class="navbar-left">
-                    <a href="{{ route('home') }}" class="logo">
-                        Alcaldía Almirante Padilla
-                    </a>
-                </div>
-
+            <div class="navbar-left">
+                <a href="{{ route('home') }}" class="logo">
+                    <img src="{{ asset('img/logo.png') }}" alt="Alcaldía" class="logo-img">
+                    <span class="logo-text">Alcaldía Bolivariana Almirante Padilla</span>
+                </a>
+            </div>
                 <!-- Botón hamburguesa -->
                 <button class="hamburger-btn" id="hamburgerBtn">
                     <span></span>
@@ -73,7 +73,7 @@
                             </form>
                         @else
                             <a href="{{ route('login') }}" class="nav-link mobile-login-link">Login</a>
-                            <a href="{{ route('register') }}" class="nav-link mobile-register-link">Registro</a>
+                        <!--    <a href="{{ route('register') }}" class="nav-link mobile-register-link">Registro</a> -->
                         @endauth
                     </div>
                 </div>

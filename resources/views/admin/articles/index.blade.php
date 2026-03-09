@@ -70,7 +70,7 @@
                     <th>Categoría</th>
                     <th>Estado</th>
                     <th>Fecha de Publicación</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
