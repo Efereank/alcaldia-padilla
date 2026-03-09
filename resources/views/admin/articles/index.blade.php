@@ -6,16 +6,12 @@
         <h1 class="admin-title">Administrar Noticias</h1>
         <div class="header-buttons">
             <a href="{{ route('admin.articles.create') }}" class="btn btn-primary">
-                + Crear Noticia
+                Crear Noticia
             </a>
             <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
                 Ver Categorías
             </a>
-            <a href="{{ route('admin.banners.index') }}" class="btn btn-info">
-                <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M4 3a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm4 3a2 2 0 100 4 2 2 0 000-4z"/>
-                    <path d="M2 13h16v2H2v-2z"/>
-                </svg>
+            <a href="{{ route('admin.banners.index') }}" class="btn btn-primary">
                 Banners
             </a>
         </div>

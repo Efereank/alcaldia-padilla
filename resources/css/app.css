@@ -814,6 +814,7 @@
 .btn-primary {
     background-color: #2563eb;
     color: white;
+    text-align: center;
 }
 
 .btn-primary:hover {
@@ -2344,3 +2345,4 @@
         height: 40px;
     }
 }
+
